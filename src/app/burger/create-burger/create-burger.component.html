@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-6 ">
+            <h2>Oredr Burger</h2>
+            <form #burgerForm="ngForm">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input required type="text" class="form-control" [(ngModel)]="newBurger.name" name="name" id="name">
+                </div>
+                <div class="form-group form-check">
+                    <input type="checkbox" class="form-check-input" [(ngModel)]="newBurger.salad" name="salad"
+                        id="salad">
+                    <label for="salad">Salad</label>
+                </div>
+                <div class="form-group">
+                    <label for="chees">Cheese Slices</label>
+                    <input type="number" pattern="\d+" class="form-control" [(ngModel)]="newBurger.chees" min='0'
+                        value="0" name="chees" id="chees">
+                </div>
+
+                <div class="form-group">
+                    <label for="cutlets">Cutlets</label>
+                    <input type="number" pattern="\d+" class="form-control" [(ngModel)]="newBurger.cutlets" min='0'
+                        value="0" name="cutlets" id="cutlets">
+                </div>
+
+                <button type="submit" type="button" class="btn btn-primary" [disabled]="!burgerForm.form.valid" (click)="newOrder()">
+                    Submit </button>
+
+                <h3>Total price:{{newBurger.price}}</h3>
+                <!-- {{newBurger | json}} -->
+                <!-- {{burgerForm.form.valid}} -->
+            </form>
+            <button type="button" class="btn btn-outline-primary" (click)="redirectToList()">List Orders</button>
+        </div>
+        <div class="col-3">
+            <div [class.show]="alert" class="alert alert-success alert-dismissible fade" role="alert">
+                <strong>{{newOrderd.name}}</strong> your order has been taken successfully.
+            </div>
+        </div>
+    </div>
+</div>

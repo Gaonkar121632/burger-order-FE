@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="row">
+        <input type="text" class=" col-4 mb-5 mt-5 form-control" placeholder="Search for name" name="search" [(ngModel)]="searchString" >
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let order of allOrders;let i=index">
+                    <th scope="row">{{i+1}}</th>
+                    <td> {{order.name}}</td>
+                    <td> {{order.price}}</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <th>Total</th>
+                    <th>{{total}}</th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <button type="button" class="col-3 btn btn-outline-primary" (click)="redirectCreate()">New Order</button>
+</div>
